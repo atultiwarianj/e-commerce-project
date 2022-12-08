@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useState, useSelector } from "react";
+
 import { NavLink } from "react-router-dom";
 import { FaLuggageCart } from 'react-icons/fa';  
 import { GiHamburgerMenu } from 'react-icons/gi';
 import "./Navbar.css";
+
 // FaLuggageCart
 const Navbar = () => {
- const [showMediaIcon, setShowMediaIcon]= useState(false);
+
+ 
+  const [showMediaIcon, setShowMediaIcon]= useState(false);
+
   return (
     <>
       <nav className="main-nav">
@@ -38,19 +43,24 @@ const Navbar = () => {
       
 
       {/* Add to Cart */}
-      <div className="social-media">
+      <div className="social-media cart_trolly_link">
         <ul className="social-media-desktop">
           <li>
-            <NavLink exact to="/">
+            <NavLink exact to="/cart">
              <FaLuggageCart className="cart"/>
+             <span className="cart-total--item">10</span>
             </NavLink>
           </li>
         </ul>
+
+
+
+
         {/* hamburger menu */}
         <div className="hamburger-menu">
-        <NavLink exact to="/" onClick={()=>setShowMediaIcon(!showMediaIcon)}>
-             <GiHamburgerMenu className="cart"/>
-            </NavLink>
+        <button onClick={()=>setShowMediaIcon(!showMediaIcon)}>
+             <GiHamburgerMenu className="cart" />
+            </button>
         
         </div>
       </div>
@@ -58,7 +68,7 @@ const Navbar = () => {
 
       {/* herro Section */}
       <div className="hero-section">
-        <h2>Atul Tiwari</h2>
+        <h2>Hello Atul Tiwari!!!</h2>
       </div>
     </>
   );
