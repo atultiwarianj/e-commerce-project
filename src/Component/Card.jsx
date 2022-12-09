@@ -1,29 +1,25 @@
-import React from 'react'
-import { useDispatch } from 'react-redux'
+import React, { useState } from 'react'
+// import { useDispatch } from 'react-redux'
 
 
-import { addCart } from '../Redux/actions/action';
-
+// import { addCart } from '../Redux/actions/action';
+ 
 const Card = (props) => {
+  // const [product, setproduct]=useState()
+  // const dispatch = useDispatch();
 
-  const dispatch = useDispatch();
-  const addProduct = (props)=> {
-    console.log(props);
-    dispatch(addCart (props));
-  }
-
-
-  // const dispatch = useDispatch
-
-  // const send=(e)=>{
-  //   // console.log(e);
-  //   dispatch (Add(e));
+  // const addProduct = (e)=> {
+  //   console.log(e);
+  //   dispatch(addCart (e));
   // }
+
+
+ 
   return (
     
 <>
 
-   <div className='card' key={props.id}>
+   {/* <div className='card' key={props.id}>
        <img src={props.ProductImg} alt='image' className='card_img' />
        <div className='card_info'>
        <span className='card_category'>{props.Description} </span>
@@ -33,7 +29,7 @@ const Card = (props) => {
        <a href='' target="_blank"/>
        <button onClick={()=>addProduct(props)} className='btn'>Add to card</button>
        </div>
-       </div>
+       </div> */}
   
 </>
   )
