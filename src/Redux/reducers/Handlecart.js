@@ -1,24 +1,12 @@
-// const INIT_STATE = {
-//     carts :[ ]
-// };
-
-// export const cartReducer =(state=INIT_STATE,action)=>{
-//     switch(action.type){
-//         case "ADD_CART":
-//             return{
-//                 ...state,
-//                 carts:[...state.carts,action.payload]
-//             }
-//             default :
-//              return state
-//     }
-// }
 
 const cart = [];
 const handleCart = (state = cart, action) => {
   const product = action.payload;
+
+
   switch (action.type) {
     case "ADDITEM":
+      console.log("reducer", action)
       // check if product is already exist
       const exist = state.find((x) => x.id === product.id);
       if (exist) {
@@ -38,7 +26,11 @@ const handleCart = (state = cart, action) => {
       }
 
       break;
+
+      
     case "DELITEM":
+      console.log("reducerdelete", action)
+
       const exist1 = state.find((x) => x.id === product.id);
       if (exist1.qty === 1) {
         return state.filter((x) => x.id !== exist1.id);
@@ -48,7 +40,7 @@ const handleCart = (state = cart, action) => {
         );
       }
       break;
-
+ 
     default:
       return state;
       break;

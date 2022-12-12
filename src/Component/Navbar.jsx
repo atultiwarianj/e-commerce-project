@@ -24,18 +24,10 @@ const state = useSelector((state)=> state.handleCart)
         {/* 2nd Menu Part */}
         <div className= {showMediaIcon ? "menu-link mobile-menu-link" : "menu-link"}>
           <ul>
-            {/* <li>
-              <NavLink  to="/">
-                Home
-              </NavLink>
-            </li> */}
+            {/* <li><NavLink  to="/"> Home</NavLink></li> */}
             <li>
-              <NavLink  to="/">
-              Product
-              </NavLink>
-            </li>
-           
-          </ul>
+              <NavLink  to="/">Product</NavLink></li>
+           </ul>
         </div>
       
 
@@ -65,7 +57,7 @@ const state = useSelector((state)=> state.handleCart)
 
       {/* herro Section */}
       <div className="hero-section">
-        <h2>Hello Atul Tiwari!!!</h2>
+        {/* <h2>Hello Atul Tiwari!!!</h2> */}
       </div>
     </>
   );
