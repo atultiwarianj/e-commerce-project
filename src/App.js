@@ -1,5 +1,4 @@
 import './App.css';
-import Card from './Component/Card';
 import { Route, Routes } from "react-router-dom";
 import Navbar from './Component/Navbar';
 import Product from './Component/Product';

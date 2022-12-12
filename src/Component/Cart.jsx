@@ -14,24 +14,26 @@ const getCartData = () => {
 
 const Cart = () => {
   const [newData, setNewData] = useState(getCartData());
-  const [cartDataa, setCartDataa] = useState([]); // to cart component
   const state = useSelector((state) => state.addItem);
 
   // console.log("newData", newData);
 
-  const dispatch = useDispatch();
+  const handleRemoceFromCart = (id) => {
+    const updatedItems= newData.filter((elem)=>{
+return elem.id !== id
+    })
+    
+    setNewData([updatedItems]);
 
-  const handleRemoceFromCart = (e) => {
-    dispatch(delCart(e));
-    console.log(e.target.value);
   };
 
   const cartItem =(props)=>{
     return(
-      // <div  key={props.id}>
+  
       <tr>
         <td>
           <div className="cart-info" key={props.id}>
+          {console.log(props.id)}
             <img src={props.ProductImg} alt="Product" className="ItemImages1" />
           </div>
         </td>
@@ -44,7 +46,7 @@ const Cart = () => {
         <td>
           <button
             className="remove"
-            onClick={() => handleRemoceFromCart(props)}
+            onClick={() => handleRemoceFromCart(props.id)}
           >
             Remove
           </button>
@@ -75,10 +77,8 @@ const Cart = () => {
           </tbody>
           <tfoot>
             <tr>
-              <td colSpan="4" align="right">
-                Total
-              </td>
-              <td>{newData.price}</td>
+             
+             
             </tr>
           </tfoot>
         </table>
