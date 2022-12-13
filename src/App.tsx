@@ -15,10 +15,10 @@ const App = ()=>{
     
      <Routes>
      {/* <Route exact path='/details/:id' element= {<Details />} /> */}
-      <Route exact path='/' element= {<Product />} />
-     <Route exact path='/details/:id' element= {<Details />} />
-      <Route exact path='/cart' element= {<Cart />} />
-      <Route exact path='*' element= {<Error />} />
+      <Route path='/' element= {<Product />} />
+     <Route path='/details/:id' element= {<Details />} />
+      <Route path='/cart' element= {<Cart />} />
+      <Route path='*' element= {<Error />} />
      
      
      </Routes>

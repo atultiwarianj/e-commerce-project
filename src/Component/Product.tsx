@@ -5,9 +5,19 @@ import "./Product.css";
 import { NavLink } from "react-router-dom";
 
 
+interface CartDataTs {
+  id:string
+  itemName:string
+  qty:number
+  ProductImg:any
+  Description:string
+  price:number
+}
+export type CartDataTsAction = CartDataTs 
+
 const Product = () => {
   const [data, setData] = useState(CardsData);
-  const cardItem =(props)=>{
+  const cardItem =(props:CartDataTs)=>{
     return(
       <div className="card cart_responsive" key={props.id}>
   

@@ -4,16 +4,26 @@ import { useParams } from "react-router-dom";
 import { addCart } from "../Redux/actions/action";
 import "./Details.css";
 import CardsData from "./CardsData";
+import { CartDataTsAction } from '../Component/Product'
 
+interface cartstate {
+  data: {id:string
+  itemName:string
+  qty:number
+  ProductImg:any
+  Description:string
+  price:number
+}[]
+}
 const Details = () => {
-  const [cartData, setCartData] = useState([]); // to cart component
+  const [cartData, setCartData] = useState< cartstate['data']>([]); // to cart component
   const proid = useParams();
   const proDetails = CardsData.filter((x) => x.id == proid.id);
   const product = proDetails[0];
 
   const dispatch = useDispatch();
   //cart button
-  const addProduct = (e) => {
+  const addProduct = (e:any) => {
     dispatch(addCart(e));
     setCartData([...cartData,e]);
   };

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 // import { useDispatch } from 'react-redux'
-const Card = (props) => {
+const Card = () => {
 
   return (  
 <>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { useDispatch } from "react-redux";
 import { delCart } from "../Redux/actions/action";
-import { useSelector } from "react-redux";
+import { useSelector } from 'react-redux';
 
 const getCartData = () => {
   const data = localStorage.getItem("cartData");
@@ -14,12 +14,12 @@ const getCartData = () => {
 const Cart = () => {
   const [newData, setNewData] = useState(getCartData());
   const [price, setPrice] = useState(0) //price
-  const state = useSelector((state) => state.handleCart.cart);
+  const state = useSelector((state:any) => state.handleCart.cart);
 
   const dispatch = useDispatch();
 
   //Remove Item 
-  const handleRemoveFromCart = (id) => {
+  const handleRemoveFromCart = (id : string) => {
     dispatch(delCart(id));
   };
 
@@ -27,7 +27,7 @@ const Cart = () => {
 
  const total = ()=>{
   let price =0;
-  state.map((e,i) =>{
+  state.map((e : any,i: number) =>{
     price = parseFloat(e.price) * e.qty + price
   }) 
   setPrice(price)
@@ -42,7 +42,7 @@ useEffect(()=>{
 
 
 
-  const cartItem = (props) => {
+  const cartItem = (props:any) => {
     return (
       <tr>
         <td>
@@ -74,14 +74,14 @@ useEffect(()=>{
               <th>Product Image</th>
               <th> Item Name</th>
               <th>Qty</th>
-              <th>Rate</th>
+              <th>Rate/Qty</th>
               <th>Remove</th>
             </tr>
           </thead>
           <tbody>{state.map(cartItem)}</tbody>
           <tfoot>
             <tr>
-              <td colSpan="4" align="right">
+              <td align="right">
                 Total
               </td>
               <td>₹ {price}</td>

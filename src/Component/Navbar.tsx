@@ -1,15 +1,17 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { NavLink } from "react-router-dom";
-import { FaLuggageCart } from 'react-icons/fa';  
-import { GiHamburgerMenu } from 'react-icons/gi';
+
+// import { FaLuggageCart } from 'react-icons/fa';  
+// import { GiHamburgerMenu } from 'react-icons/gi';
 import "./Navbar.css";
+
 
 
 // FaLuggageCart
 const Navbar = () => {
-const state = useSelector((state)=> state.handleCart.cart) 
- console.log("state",state)
+const state = useSelector((state:any)=> state.handleCart.cart) 
+//  console.log("state",state)
   const [showMediaIcon, setShowMediaIcon]= useState(false);
 
   return (
@@ -36,7 +38,8 @@ const state = useSelector((state)=> state.handleCart.cart)
         <ul className="social-media-desktop">
           <li>
             <NavLink  to="/cart" >
-             <FaLuggageCart className="cart"/>
+             {/* <FaLuggageCart className="cart"/> */}
+                  Cart
              <span className="cart-total--item">{state.length}</span>
             </NavLink>
           </li>
@@ -48,7 +51,7 @@ const state = useSelector((state)=> state.handleCart.cart)
         {/* hamburger menu */}
         <div className="hamburger-menu">
         <button onClick={()=>setShowMediaIcon(!showMediaIcon)}>
-             <GiHamburgerMenu className="cart" />
+             {/* <GiHamburgerMenu className="cart" /> */}
             </button>
         
         </div>
