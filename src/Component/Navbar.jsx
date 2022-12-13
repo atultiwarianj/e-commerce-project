@@ -8,8 +8,8 @@ import "./Navbar.css";
 
 // FaLuggageCart
 const Navbar = () => {
-const state = useSelector((state)=> state.handleCart) 
- 
+const state = useSelector((state)=> state.handleCart.cart) 
+ console.log("state",state)
   const [showMediaIcon, setShowMediaIcon]= useState(false);
 
   return (
@@ -35,7 +35,7 @@ const state = useSelector((state)=> state.handleCart)
       <div className="social-media cart_trolly_link">
         <ul className="social-media-desktop">
           <li>
-            <NavLink  to="/cart">
+            <NavLink  to="/cart" >
              <FaLuggageCart className="cart"/>
              <span className="cart-total--item">{state.length}</span>
             </NavLink>

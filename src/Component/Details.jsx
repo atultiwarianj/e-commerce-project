@@ -15,7 +15,7 @@ const Details = () => {
   //cart button
   const addProduct = (e) => {
     dispatch(addCart(e));
-    setCartData([e]);
+    setCartData([...cartData,e]);
   };
 
   //Saving data to Local Storage

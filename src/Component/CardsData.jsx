@@ -2,7 +2,7 @@
 
 const CardsData = [
     {
-        id : 1,
+        id : "1",
         itemName : "Books",
         qty : 1,
         ProductImg : "./Images/books.jpg",
@@ -10,7 +10,7 @@ const CardsData = [
         price : 5500,
     },
     {
-        id : 2,
+        id : "2",
         itemName : "Pen",
         qty : 1,
         ProductImg : "Images/pen1.jpg",
@@ -18,7 +18,7 @@ const CardsData = [
         price : 10,
     },
     {
-        id : 3,
+        id : "3",
         itemName : "Laptop",
         qty : 1,
         ProductImg : "./Images/leptop.jpg",
@@ -26,7 +26,7 @@ const CardsData = [
         price : 2500,
     },
     {
-        id : 4,
+        id : "4",
         itemName : "Monitor",
         qty : 1,
         ProductImg : "./Images/monitor.jpg",
@@ -34,7 +34,7 @@ const CardsData = [
         price : 500,
     },
     {
-        id : 5,
+        id : "5",
         itemName : "keyboard",
         qty : 1,
         ProductImg : "Images/keyboard.jpg",

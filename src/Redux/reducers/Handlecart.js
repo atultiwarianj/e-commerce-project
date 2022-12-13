@@ -1,56 +1,35 @@
+const initialStore ={
+  cart : [],
+}
 
-const cart = [];
-const handleCart = (state = cart, action) => {
-  const product = action.payload;
-
+const handleCart = (state = initialStore, action) => {
+  const product = action.payload
 
   switch (action.type) {
     case "ADDITEM":
-      // console.log("reducer", action)
-      // check if product is already exist
-      const exist = state.find((x) => x.id === product.id);
-      if (exist) {
-        // increase the qty
-        return state.map((x) =>
-          x.id === product.id ? { ...x, qty: x.qty + 1 } : x
-        );
+      const itemIndex = state.cart.findIndex((item)=>item.id=== action.payload.id)
+      if(itemIndex >= 0){
+        state.cart[itemIndex].qty += 1
       } else {
-        const product = action.payload;
-        return [
-          ...state,
-          {
-            ...product,
-            qty: 1,
-          },
-        ];
+        const temp = { ...action.payload, qty : 1}
+         return {
+                ...state,
+                cart: [ ...state.cart, temp],
+              }
       }
-
-      break;
-
       
-    case "DELITEM":
-      
+      case "DELITEM":
+        const data = state.cart.filter((el)=> el.id !== action.payload)
+        return {
+        ...state,
+        cart : data,
+        }
+        default:
+          return state
+    }
 
-      const exist1 = state.find((x) => x.id === product.id);
-      if (exist1.qty === 1) {
-        console.log("exist1",exist1)
-        return state.filter((x) => x.id !== exist1.id );
-        
-      } else {
-        console.log("exist1",exist1)
-        return state.map((x) =>
-
-          x.id === product.id ? { ...x, qty: x.qty - 1 } : x
-          
-        );
-      }
-
-      break;
- 
-    default:
       return state;
-      break;
-  }
+    
 };
 
 export default handleCart;

@@ -1,24 +1,15 @@
-// export const Add =(item)=>{
-//     return{
-//         type : "ADD_CART",
-//         payload: item
-//     }
-// }
-// For Add item to cart
-export const addCart =(product)=>{
+export const addCart =(item)=>{
     // console.log("action", product)
     return{
         type : "ADDITEM",
-        payload : product
+        payload : item
     }
 }
 
 // For delete item from cart
-export const delCart =(product)=>{
-    // console.log("actionDelete", product)
-
+export const delCart =(id)=>{
     return{
         type : "DELITEM",
-        payload : product
+        payload : id
     }
 }

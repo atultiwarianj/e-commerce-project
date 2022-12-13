@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import "./Cart.css";
 import { useDispatch } from "react-redux";
 import { delCart } from "../Redux/actions/action";
@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 const getCartData = () => {
   const data = localStorage.getItem("cartData");
-  // console.log(data);
   if (data) {
     return JSON.parse(data);
   } else return [];
@@ -14,26 +13,41 @@ const getCartData = () => {
 
 const Cart = () => {
   const [newData, setNewData] = useState(getCartData());
-  const state = useSelector((state) => state.addItem);
+  const [price, setPrice] = useState(0) //price
+  const state = useSelector((state) => state.handleCart.cart);
 
-  // console.log("newData", newData);
+  const dispatch = useDispatch();
 
-  const handleRemoceFromCart = (id) => {
-    const updatedItems= newData.filter((elem)=>{
-return elem.id !== id
-    })
-    
-    setNewData([updatedItems]);
-
+  //Remove Item 
+  const handleRemoveFromCart = (id) => {
+    dispatch(delCart(id));
   };
 
-  const cartItem =(props)=>{
-    return(
-  
+  //total price
+
+ const total = ()=>{
+  let price =0;
+  state.map((e,i) =>{
+    price = parseFloat(e.price) * e.qty + price
+  }) 
+  setPrice(price)
+  console.log("price",price)
+}
+
+
+useEffect(()=>{
+  total()
+}, [total])
+
+
+
+
+  const cartItem = (props) => {
+    return (
       <tr>
         <td>
           <div className="cart-info" key={props.id}>
-          {console.log(props.id)}
+            {/* {console.log(props.id)} */}
             <img src={props.ProductImg} alt="Product" className="ItemImages1" />
           </div>
         </td>
@@ -44,19 +58,12 @@ return elem.id !== id
         <td>{props.price}</td>
 
         <td>
-          <button
-            className="remove"
-            onClick={() => handleRemoceFromCart(props.id)}
-          >
-            Remove
-          </button>
+          <button className="remove" onClick={() => handleRemoveFromCart(props.id)}>Remove</button>
         </td>
       </tr>
       // </div>
     );
-
-    }
-
+  };
 
   return (
     <>
@@ -71,14 +78,13 @@ return elem.id !== id
               <th>Remove</th>
             </tr>
           </thead>
-          <tbody>
-            {newData.map(cartItem)}
-              
-          </tbody>
+          <tbody>{state.map(cartItem)}</tbody>
           <tfoot>
             <tr>
-             
-             
+              <td colSpan="4" align="right">
+                Total
+              </td>
+              <td>₹ {price}</td>
             </tr>
           </tfoot>
         </table>
